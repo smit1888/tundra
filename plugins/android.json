@@ -7,10 +7,10 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.app"
-    },
     "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.edumedia.smit1888.tundra"
+    },
+    "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.edumedia.smit1888.tundra"
     }
   },

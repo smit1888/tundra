@@ -12,6 +12,7 @@ const app = {
         // app.getmatch();
     },
     getDiv:()=>{
+        app.getmatch();
         let section = document.querySelector(".first");
         let target= document.createElement('div');
         target.setAttribute('class','card fixed top');
