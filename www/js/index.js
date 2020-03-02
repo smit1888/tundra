@@ -23,7 +23,7 @@ const app = {
         setTimeout(()=>{app.showmatch()},200);
     },
     getmatch:()=>{
-        let url = "http://griffis.edumedia.ca/mad9022/tundra/get.profiles.php";
+        let url = "https://griffis.edumedia.ca/mad9022/tundra/get.profiles.php";
         fetch(url)
         .then(response=>{
             return response.json();
