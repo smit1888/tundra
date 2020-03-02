@@ -8,18 +8,18 @@ const app = {
         app.getmatch();
         document.querySelector(".home").addEventListener("click",app.showmatch);
         document.getElementById("favsBtn").addEventListener("click",app.details);
-        // app.getmatch();
+        
     },
     getDiv:()=>{
         let section = document.querySelector(".first");
         let target= document.createElement('div');
         target.setAttribute('class','card fixed top');
-        // target
+       
         section.appendChild(target);
         let tiny = new tinyshell(target);
         tiny.addEventListener("swipeleft", app.swipeleft);
         tiny.addEventListener("swiperight", app.swiperight);
-        // app.showmatch();
+        
         setTimeout(()=>{app.showmatch()},200);
     },
     getmatch:()=>{
@@ -40,8 +40,7 @@ const app = {
  
         document.querySelector(".saved").classList.remove("active");
         document.querySelector(".first").classList.add("active");
-        // document.querySelector(".tab.home").classList.add("current");
-        // document.querySelector(".tab.heart").classList.remove("current");
+       
         if(app.match.length <= 3){
             app.getmatch();
         }
@@ -100,13 +99,12 @@ const app = {
             alert("You don't have any match yet");
             document.querySelector(".saved").classList.remove("active");
             document.querySelector(".first").classList.add("active");
-            // document.querySelector(".heart").classList.remove("current");
+           
         }
         else{
             document.querySelector(".first").classList.remove("active");
             document.querySelector(".saved").classList.add("active");
-            // document.querySelector(".tab.home").classList.remove("current");
-            // document.querySelector(".tab.heart").classList.add("current");
+            
         let ul = document.querySelector("ul");
         ul.innerHTML="";
         let item = sessionStorage.getItem(app.KEY);
