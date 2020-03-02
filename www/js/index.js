@@ -6,13 +6,11 @@ const app = {
     KEY:"SMITTUNDRA",
     init: () => {
         app.getmatch();
-        app.getDiv();
         document.querySelector(".home").addEventListener("click",app.showmatch);
         document.getElementById("favsBtn").addEventListener("click",app.details);
         // app.getmatch();
     },
     getDiv:()=>{
-        app.getmatch();
         let section = document.querySelector(".first");
         let target= document.createElement('div');
         target.setAttribute('class','card fixed top');
@@ -32,13 +30,14 @@ const app = {
         })
         .then(elements=>{
             let imgurl = "https:"+decodeURIComponent(elements.imgBaseURL);
-            
+           
             app.imguri = imgurl;
             app.match = elements.profiles;
+            app.getDiv();
         })
     },
     showmatch:()=>{
-
+ 
         document.querySelector(".saved").classList.remove("active");
         document.querySelector(".first").classList.add("active");
         // document.querySelector(".tab.home").classList.add("current");
@@ -52,8 +51,8 @@ const app = {
             card.classList.add('active')
     },200)
         card.innerHTML="";
-        let source = app.match[0]; 
-
+        let source = app.match[0];
+ 
     let image = document.createElement("img");
     image.setAttribute("src", app.imguri + source.avatar);
     let personName = document.createElement("p");
@@ -66,7 +65,7 @@ const app = {
     image.insertAdjacentElement("afterend", personName);
     personName.insertAdjacentElement("afterend", personGender);
     personGender.insertAdjacentElement("afterend", distance);
-        
+       
     },
     swipeleft:()=>{
         let card=  document.querySelector('.card');
@@ -77,7 +76,7 @@ const app = {
         document
         .querySelector(".rejected")
         .classList.remove("overlay","message");
-
+ 
     }, 500);
         app.match.splice([0],1);
     },
@@ -90,7 +89,7 @@ const app = {
         document.
         querySelector(".pass")
         .classList.remove("overlay","message");
-
+ 
     }, 500);
          app.ses.push(app.match[0]);
          app.match.splice([0],1)
@@ -114,23 +113,23 @@ const app = {
         let data = JSON.parse(item);
         app.ses = data;
         data.forEach(element=>{
-
+ 
             let list = document.createElement("li");
             list.setAttribute("class", "list-item");
-            
+           
             let div = document.createElement("div");
             div.setAttribute("class", "list-text");
-
+ 
 
             let image = document.createElement("img");
             image.setAttribute("src",app.imguri + element.avatar);
             image.setAttribute("alt","image");
             image.setAttribute("class","avatar");
-            
-
+           
+ 
             let name = document.createElement("p");
             name.textContent = element.first+" "+element.last;
-
+ 
             let del = document.createElement("span");
                 del.setAttribute('class','icon delete')
             list.setAttribute("data-id",element.id);
@@ -140,11 +139,11 @@ const app = {
             del.addEventListener("click",app.deletematch);
             list.appendChild(div)
             ul.appendChild(list);
-
+ 
         });
         }
-        
-
+       
+ 
     },
     deletematch:(ev)=>{
         let target = ev.target;
@@ -157,7 +156,7 @@ const app = {
         app.ses.splice(indexof,1);
         sessionStorage.setItem(app.KEY,JSON.stringify(app.ses))
         app.details();
-    
+   
     },
 
 
@@ -165,3 +164,4 @@ const app = {
 }
 const ready = "cordova" in window ? "deviceready" : "DOMContentLoaded";
 document.addEventListener(ready, app.init);
+ 
